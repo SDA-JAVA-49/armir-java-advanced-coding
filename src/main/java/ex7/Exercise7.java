@@ -15,6 +15,11 @@ public class Exercise7 {
                 new Employee("H623454687A", "Jessie Doe", 30500)
         );
 
+        int maxSalary = employees.stream()
+                .mapToInt(Employee :: getSalary)
+                .max()
+                .orElseThrow(() -> new NoSuchElementException("No employees available"));
+
         List<Employee> sortByName = employees.stream()
                 .sorted(Comparator.comparing(Employee :: getNames))
                 .collect(Collectors.toList());
@@ -27,6 +32,7 @@ public class Exercise7 {
 
         System.out.println("First eligible employee found: " + salary);
         System.out.println("Employees names sorted: " + sortByName);
+        System.out.println("Maximum salary: " + maxSalary);
 
     }
 
